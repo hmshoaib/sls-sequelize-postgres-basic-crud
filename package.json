@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "initDb":"sh init_test_db && node_modules/.bin/sequelize db:migrate --env test && node_modules/.bin/sequelize db:seed:all --env test ",
+    "initDb": "sh init_test_db && node_modules/.bin/sequelize db:migrate --env test && node_modules/.bin/sequelize db:seed:all --env test ",
     "test": "npm run initDb && sls invoke test  && sh destroy_test_db"
   },
   "author": "MDSHOAIBPK",
