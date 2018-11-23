@@ -1,0 +1,3 @@
+#!/bin/bash
+echo 'DROP DATABASE IF EXISTS'
+psql postgres -c 'DROP DATABASE IF EXISTS tutorial_test'

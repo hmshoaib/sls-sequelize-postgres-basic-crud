@@ -1,0 +1,21 @@
+{
+  "name": "sequelize-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "initDb":"sh init_test_db && node_modules/.bin/sequelize db:migrate --env test && node_modules/.bin/sequelize db:seed:all --env test ",
+    "test": "npm run initDb && sls invoke test  && sh destroy_test_db"
+  },
+  "author": "MDSHOAIBPK",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.38.0",
+    "sequelize-cli": "^4.0.0"
+  },
+  "devDependencies": {
+    "serverless-jest-plugin": "^0.1.6"
+  }
+}

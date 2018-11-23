@@ -1,0 +1,6 @@
+#!/bin/bash
+echo 'DROP DATABASE IF EXISTS'
+psql postgres -c 'DROP DATABASE IF EXISTS tutorial_test'
+echo 'CREATE DATABASE tutorial_test'
+psql postgres -c 'CREATE DATABASE tutorial_test';
+echo 'DB Created'

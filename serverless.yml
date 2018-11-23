@@ -1,0 +1,68 @@
+service: sq-tutorial
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: local
+  region: ${file(serverless.env.yml):dev.AWS_REGION}
+  profile: default # local AWS configuration file
+  environment: ${file(./env.yml):${opt:stage, self:provider.stage}}
+
+plugins:
+  - serverless-jest-plugin
+custom:
+  jest:
+  # You can pass jest options here
+  # See details here: https://facebook.github.io/jest/docs/configuration.html
+  # For instance, uncomment next line to enable code coverage
+  # collectCoverage: true
+
+functions:
+  attachGroup:
+    description: Attach User
+    handler: handler.attachGroup
+    events:
+    - http:
+        path: users
+        method: get
+        cors: true
+  getAllUsers:
+    description: Get All
+    handler: users/handler.getAllUsers
+    events:
+    - http:
+        path: users
+        method: get
+        cors: true
+  getUser:
+    description: Get One
+    handler: users/handler.getUser
+    events:
+    - http:
+        path: users/{id}
+        method: get
+        cors: true
+  saveUser:
+    description: Save One
+    handler: users/handler.saveUser
+    events:
+    - http:
+        path: users
+        method: post
+        cors: true
+  updateUser:
+    description: Update One
+    handler: users/handler.updateUser
+    events:
+    - http:
+        path: users
+        method: put
+        cors: true
+  deleteUser:
+    description: Update One
+    handler: users/handler.deleteUser
+    events:
+    - http:
+        path: users
+        method: put
+        cors: true
